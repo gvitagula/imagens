@@ -42,9 +42,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fábrica Vita Gula - Imagens</title>
+  <title>Fábrica Vita Gula - Galeria de Imagens</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Orbitron:wght@400&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -57,6 +56,7 @@
       align-items: flex-start;
       min-height: 100vh;
       flex-direction: column;
+      overflow-x: hidden;
     }
     .container {
       width: 100%;
@@ -302,105 +302,222 @@
       background-color: #ff6f61;
       color: #ffffff;
     }
-    .tab-content {
-      padding: 15px;
-      background-color: #2c2c2c;
+    .main-content {
+      padding: 20px;
+      background: linear-gradient(180deg, #2c2c2c 0%, #1a1a1a 100%);
       border-radius: 10px;
       margin: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       flex: 1;
-      overflow-y: auto;
       box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      animation: fadeIn 1s ease-out;
     }
-    .tab-content h3 {
-      color: #ff6f61;
-      font-size: 2em;
-      margin: 15px 0;
-      text-align: center;
-      text-shadow: 0 0 10px rgba(255, 111, 97, 0.8);
-      animation: float 3s ease-in-out infinite;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-    .maintenance-animation {
-      width: 100%;
-      max-width: 300px;
-      height: auto;
-      margin: 20px 0;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 204, 153, 0.5);
-    }
-    .maintenance-message {
-      text-align: center;
-      font-size: 1.2em;
-      opacity: 0.8;
-      margin-bottom: 20px;
-    }
-    .back-link {
-      display: inline-block;
-      padding: 8px 16px;
-      background-color: #ff6f61;
-      color: #ffffff;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    .back-link:hover {
-      background-color: #ffffff;
-      color: #ff6f61;
-    }
-    .footer {
+    .logo-section {
       text-align: center;
       padding: 20px;
-      background-color: #3a3a3a;
-      color: #f0f0f0;
-      font-size: 0.9em;
-      opacity: 0.8;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px rgba(30, 144, 255, 0.5);
     }
-    .footer a {
-      color: #00cc99;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    .footer a:hover {
-      color: #ff6f61;
-    }
-    .megaphone-message {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #ff6f61;
-      color: #ffffff;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-      z-index: 10000;
-      text-align: center;
-      font-size: 1em;
-      width: 90%;
+    .logo-section img {
       max-width: 300px;
+      width: 100%;
+      border-radius: 10px;
+      animation: logoPulse 3s infinite ease-in-out;
+      box-shadow: 0 0 15px rgba(0, 204, 153, 0.7);
     }
-    .megaphone-message button {
-      margin-top: 10px;
-      padding: 8px 16px;
-      background-color: #ffffff;
+    @keyframes logoPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .gallery-section {
+      margin: 20px 0;
+    }
+    .gallery-section h2 {
+      font-family: 'Orbitron', sans-serif;
       color: #ff6f61;
-      border: none;
-      border-radius: 5px;
+      text-align: center;
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(255, 111, 97, 0.5);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 10px;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
       cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(30, 144, 255, 0.7);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    .gallery-item .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: #f0f0f0;
+      padding: 10px;
+      text-align: center;
       font-size: 0.9em;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover .caption {
+      opacity: 1;
+    }
+    .carousel-section {
+      margin: 20px 0;
+      position: relative;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 204, 153, 0.5);
+    }
+    .carousel-section h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff6f61;
+      text-align: center;
+      font-size: 1.5em;
+      margin-bottom: 15px;
+    }
+    .carousel {
+      display: flex;
+      overflow: hidden;
+      border-radius: 10px;
+      position: relative;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    .carousel-item {
+      flex: 0 0 100%;
+      transition: transform 0.5s ease;
+    }
+    .carousel-item img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 111, 97, 0.8);
+      color: #ffffff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 1.2em;
+      border-radius: 50%;
+      transition: background 0.3s ease;
+      z-index: 10;
       min-width: 44px;
       min-height: 44px;
       touch-action: manipulation;
+    }
+    .carousel-btn:hover {
+      background: #ffffff;
+      color: #ff6f61;
+    }
+    .carousel-btn.prev {
+      left: 10px;
+    }
+    .carousel-btn.next {
+      right: 10px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease-out;
+    }
+    .modal-content {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(30, 144, 255, 0.7);
+      position: relative;
+      background: #2c2c2c;
+      padding: 20px;
+      text-align: center;
+    }
+    .modal-content img {
+      max-width: 100%;
+      max-height: 60vh;
+      border-radius: 10px;
+    }
+    .modal-content p {
+      margin: 10px 0;
+      font-size: 1em;
+      color: #f0f0f0;
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ff6f61;
+      color: #ffffff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: background 0.3s ease;
+      min-width: 44px;
+      min-height: 44px;
+      touch-action: manipulation;
+    }
+    .modal-close:hover {
+      background: #ffffff;
+      color: #ff6f61;
+    }
+    footer {
+      background: linear-gradient(135deg, #1e90ff 0%, #00cc99 100%);
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+      border-top: 5px solid #ff6f61;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    }
+    footer a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 0.9em;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #ff6f61;
     }
     @media (min-width: 768px) {
       .container {
@@ -462,11 +579,17 @@
         padding: 8px 12px;
         font-size: 0.9em;
       }
-      .tab-content h3 {
-        font-size: 2.5em;
-      }
-      .maintenance-animation {
+      .logo-section img {
         max-width: 400px;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+      .gallery-item img {
+        height: 200px;
+      }
+      .carousel-item img {
+        height: 400px;
       }
     }
     @media (max-width: 600px) {
@@ -544,15 +667,25 @@
         padding: 6px 10px;
         text-align: center;
       }
-      .tab-content {
+      .main-content {
         padding: 10px;
         margin: 6px;
       }
-      .tab-content h3 {
-        font-size: 1.5em;
+      .logo-section img {
+        max-width: 200px;
       }
-      .maintenance-animation {
-        max-width: 250px;
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      }
+      .gallery-item img {
+        height: 100px;
+      }
+      .carousel-item img {
+        height: 200px;
+      }
+      .carousel-btn {
+        padding: 8px;
+        font-size: 1em;
       }
     }
   </style>
@@ -605,11 +738,11 @@
       <div class="nav-item dropdown" onclick="toggleDropdown(event, 'produtos')" onmouseover="playHoverSound()">
         <span class="dropdown-toggle">Produtos</span>
         <div class="dropdown-content">
-          <a data-type="paes" role="menuitem" onmouseover="playHoverSound()" onclick="playClickSound(); navigateToProductPage('paes')">Pães</a>
-          <a data-type="biscoitos" role="menuitem" onmouseover="playHoverSound()" onclick="playClickSound(); navigateToProductPage('biscoitos')">Biscoitos</a>
-          <a data-type="bolos" role="menuitem" onmouseover="playHoverSound()" onclick="playClickSound(); navigateToProductPage('bolos')">Bolos</a>
-          <a data-type="mais-produtos" role="menuitem" onmouseover="playHoverSound()" onclick="playClickSound(); navigateToProductPage('mais-produtos')">+Produtos</a>
-          <a data-type="precos" role="menuitem" onmouseover="playHoverSound()" onclick="playClickSound(); navigateToProductPage('precos')">Preços</a>
+          <a href="https://gvitagula.github.io/paes/" role="menuitem" onmouseover="playHoverSound()" onclick="playClickSound()">Pães</a>
+          <a href="https://gvitagula.github.io/biscoitos/" role="menuitem" onmouseover="playHoverSound()" onclick="playClickSound()">Biscoitos</a>
+          <a href="https://gvitagula.github.io/bolos/" role="menuitem" onmouseover="playHoverSound()" onclick="playClickSound()">Bolos</a>
+          <a href="https://gvitagula.github.io/+produtos/" role="menuitem" onmouseover="playHoverSound()" onclick="playClickSound()">+Produtos</a>
+          <a href="https://gvitagula.github.io/precos/" role="menuitem" onmouseover="playHoverSound()" onclick="playClickSound()">Preços</a>
         </div>
       </div>
       <a class="nav-item" href="https://gvitagula.github.io/contatos/" role="tab" onmouseover="playHoverSound()">Contatos</a>
@@ -617,24 +750,73 @@
       <div class="nav-item dropdown" onclick="toggleDropdown(event, 'downloads')" onmouseover="playHoverSound()">
         <span class="dropdown-toggle">Downloads</span>
         <div class="dropdown-content">
-          <a href="https://gvitagula.github.io/pdf/" role="menuitem" onmouseover="playHoverSound()">Texto</a>
-          <a href="https://gvitagula.github.io/imagens/" role="menuitem" onmouseover="playHoverSound()">Imagens</a>
-          <a href="https://gvitagula.github.io/mp3/" role="menuitem" onmouseover="playHoverSound()">Áudios</a>
-          <a href="https://gvitagula.github.io/video/" role="menuitem" onmouseover="playHoverSound()">Vídeos</a>
-          <a href="https://gvitagula.github.io/programas/" role="menuitem" onmouseover="playHoverSound()">Programas</a>
-          <a href="https://gvitagula.github.io/outros/" role="menuitem" onmouseover="playHoverSound()">Outros</a>
+          <a href="https://gvitagula.github.io/pdf/" role="menuitem" onmouseover="playHoverSound()" onclick="playClickSound()">Texto</a>
+          <a href="https://gvitagula.github.io/imagens/" role="menuitem" onmouseover="playHoverSound()" onclick="playClickSound()" class="active">Imagens</a>
+          <a href="https://gvitagula.github.io/mp3/" role="menuitem" onmouseover="playHoverSound()" onclick="playClickSound()">Áudios</a>
+          <a href="https://gvitagula.github.io/video/" role="menuitem" onmouseover="playHoverSound()" onclick="playClickSound()">Vídeos</a>
+          <a href="https://gvitagula.github.io/programas/" role="menuitem" onmouseover="playHoverSound()" onclick="playClickSound()">Programas</a>
+          <a href="https://gvitagula.github.io/outros/" role="menuitem" onmouseover="playHoverSound()" onclick="playClickSound()">Outros</a>
         </div>
       </div>
     </div>
-    <div class="tab-content">
-      <h3>Página em Manutenção</h3>
-      <p class="maintenance-message">Estamos trabalhando para trazer o melhor conteúdo para você! Volte em breve.</p>
-      <img src="https://media.tenor.com/JHXKK4oP06MAAAAj/manutencao.gif" alt="Animação de Manutenção" class="maintenance-animation">
-      <a href="https://gvitagula.github.io/site/" class="back-link">Voltar à Página Principal</a>
+    <div class="main-content">
+      <div class="logo-section">
+        <h2>Nossa Identidade</h2>
+        <img src="https://i.ibb.co/7tvMh898/LOGO-VITA-GULA4.jpg" alt="Logo Vita Gula" onclick="openModal('https://i.ibb.co/7tvMh898/LOGO-VITA-GULA4.jpg', 'Logo Oficial da Fábrica Vita Gula')">
+      </div>
+      <div class="gallery-section">
+        <h2>Momentos dos Funcionários</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1547595628-c61a29f496f0', 'Equipe preparando pães frescos')">
+            <img src="https://images.unsplash.com/photo-1547595628-c61a29f496f0" alt="Equipe preparando pães">
+            <div class="caption">Preparando Pães Frescos</div>
+          </div>
+          <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1556911220-bff31c812dba', 'Confraternização da equipe')">
+            <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba" alt="Confraternização da equipe">
+            <div class="caption">Confraternização da Equipe</div>
+          </div>
+          <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1578985545062-69928b1d9587', 'Decorando bolos artesanais')">
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587" alt="Decorando bolos">
+            <div class="caption">Decorando Bolos Artesanais</div>
+          </div>
+          <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1600585154340-be6161a56a0c', 'Equipe em ação na padaria')">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Equipe na padaria">
+            <div class="caption">Equipe em Ação</div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-section">
+        <h2>Novidades Visuais</h2>
+        <div class="carousel">
+          <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb6c6681" alt="Novo pão artesanal">
+          </div>
+          <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1605092676921-4ac0ae68641b" alt="Bolo de lançamento">
+          </div>
+          <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b" alt="Evento de degustação">
+          </div>
+        </div>
+        <button class="carousel-btn prev" onclick="moveCarousel(-1)">❮</button>
+        <button class="carousel-btn next" onclick="moveCarousel(1)">❯</button>
+      </div>
     </div>
-    <footer class="footer">
+    <footer>
+      <p>Siga-nos nas redes sociais:</p>
+      <a href="#" onmouseover="playHoverSound()" onclick="playClickSound()">Instagram</a>
+      <a href="#" onmouseover="playHoverSound()" onclick="playClickSound()">Facebook</a>
+      <a href="#" onmouseover="playHoverSound()" onclick="playClickSound()">Twitter</a>
       <p>© 2025 Fábrica Vita Gula. Todos os direitos reservados.</p>
     </footer>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">Fechar</button>
+      <img id="modal-image" src="" alt="Imagem ampliada">
+      <p id="modal-caption"></p>
+    </div>
   </div>
 
   <audio id="background-audio" preload="auto">
@@ -650,12 +832,38 @@
     Seu navegador não suporta o elemento de áudio.
   </audio>
 
-  <div id="megaphone-message" class="megaphone-message">
-    🎉 Temos boas ofertas para você! 🎉
-    <button onclick="hideMegaphoneMessage()">Fechar</button>
-  </div>
-
   <script>
+    var gk_isXlsx = false;
+    var gk_xlsxFileLookup = {};
+    var gk_fileData = {};
+    function filledCell(cell) {
+      return cell !== '' && cell != null;
+    }
+    function loadFileData(filename) {
+      if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+        try {
+          var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+          var firstSheetName = workbook.SheetNames[0];
+          var worksheet = workbook.Sheets[firstSheetName];
+          var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+          var filteredData = jsonData.filter(row => row.some(filledCell));
+          var headerRowIndex = filteredData.findIndex((row, index) =>
+            row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+          );
+          if (headerRowIndex === -1 || headerRowIndex > 25) {
+            headerRowIndex = 0;
+          }
+          var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
+          csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+          return csv;
+        } catch (e) {
+          console.error(e);
+          return "";
+        }
+      }
+      return gk_fileData[filename] || "";
+    }
+
     let volumeLevel = 0;
     const audio = document.getElementById('background-audio');
     const audioSource = document.getElementById('audio-source');
@@ -667,7 +875,7 @@
     let hasClicked = false;
     const tracks = [
       "https://raw.githubusercontent.com/gvitagula/site/refs/heads/main/aud/musica1.mp3",
-      "https://raw.githubusercontent.com/gvitagula/site/refs/heads/main/aud/musica2.mp3",
+      "https://raw.githubusercontent.com/gvitagula/site/refs/heads/main/aud/musica2.wav",
       "https://raw.githubusercontent.com/gvitagula/site/refs/heads/main/aud/musica3.mp3"
     ];
     let currentTrackIndex = 0;
@@ -689,22 +897,6 @@
       if (!clickSound.paused) clickSound.pause();
       clickSound.currentTime = 0;
       clickSound.play().catch(error => console.error("Click sound playback failed:", error));
-    }
-
-    function navigateToProductPage(type) {
-      const productPages = {
-        'paes': 'https://gvitagula.github.io/paes/',
-        'biscoitos': 'https://gvitagula.github.io/biscoitos/',
-        'bolos': 'https://gvitagula.github.io/bolos/',
-        'mais-produtos': 'https://gvitagula.github.io/+produtos/',
-        'precos': 'https://gvitagula.github.io/precos/'
-      };
-      const url = productPages[type];
-      if (url) {
-        window.location.href = url;
-      } else {
-        console.error("Página não encontrada para o tipo:", type);
-      }
     }
 
     function changeVolume() {
@@ -824,13 +1016,14 @@
     audio.load();
 
     function toggleDropdown(event, tabName) {
-      event.preventDefault();
       event.stopPropagation();
       const dropdown = event.currentTarget;
       const isOpen = dropdown.classList.contains('open');
       document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
-      if (!isOpen) dropdown.classList.add('open');
-      playClickSound();
+      if (!isOpen && !event.target.closest('.dropdown-content')) {
+        dropdown.classList.add('open');
+        playClickSound();
+      }
     }
 
     document.addEventListener('click', (event) => {
@@ -839,17 +1032,36 @@
       }
     });
 
+    function openModal(src, caption) {
+      const modal = document.getElementById('modal');
+      const modalImage = document.getElementById('modal-image');
+      const modalCaption = document.getElementById('modal-caption');
+      modalImage.src = src;
+      modalCaption.textContent = caption;
+      modal.style.display = 'flex';
+      playClickSound();
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.style.display = 'none';
+      playClickSound();
+    }
+
+    let carouselIndex = 0;
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    function moveCarousel(direction) {
+      carouselIndex = (carouselIndex + direction + carouselItems.length) % carouselItems.length;
+      const offset = -carouselIndex * 100;
+      document.querySelector('.carousel').style.transform = `translateX(${offset}%)`;
+      playClickSound();
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       let visitCount = parseInt(localStorage.getItem('visitCount') || '141', 10);
       visitCount++;
       localStorage.setItem('visitCount', visitCount);
-      document.getElementById('megaphone-message').style.display = 'block';
-      setTimeout(hideMegaphoneMessage, 5000);
     });
-
-    function hideMegaphoneMessage() {
-      document.getElementById('megaphone-message').style.display = 'none';
-    }
   </script>
 </body>
 </html>
